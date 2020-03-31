@@ -21,12 +21,14 @@ public class BCPGPTest {
 		encryptor.setArmored(false);
 		encryptor.setCheckIntegrity(true);
 		encryptor.setPublicKeyFilePath("./keys/Public.gpg");
+		encryptor.setPublicKeyFilePath("./PublicKeyRing.pkr");
 		encryptor.encryptFile("./testFile.txt", "./EncryptedTest.txt");
 	}
 	
 	public static void decryptFile() throws Exception {
-		BCPGPDecryptor decryptor = new BCPGPDecryptor(); 
+		BCPGPDecryptor decryptor = new BCPGPDecryptor();
 		decryptor.setPrivateKeyFilePath("./keys/Private.gpg");
+		decryptor.setPrivateKeyFilePath("./PrivateKeyRing.pkr");
 		decryptor.setPassword("test123@");
 		decryptor.decryptFile("./EncryptedTest.txt", "./DecryptedTest.txt");
 	}
